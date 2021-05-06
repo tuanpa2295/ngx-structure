@@ -1,0 +1,77 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="text-center">{{'TITLE_QUESTION' | translate}}</th>
+                        <th class="text-center">{{'TITLE_ANSWER' | translate}}</th>
+                        <th class="text-center">{{'TITLE_CATEGORY' | translate}}</th>
+                        <th class="text-center"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-if="shouldFaqsDisplayed()"
+                        ng-repeat="item in loadFaqsResult.items">
+                        <td class="text-center"
+                            ng-switch="item.isHtmlQuestion">
+                            <div ng-switch-when="true" ng-bind-html="item.question"></div>
+                            <div ng-switch-default="">
+                                {{item.question}}
+                            </div>
+                        </td>
+                        <td class="text-center"
+                            ng-switch="item.isHtmlAnswer">
+                            <div ng-switch-when="true" ng-bind-html="item.answer"></div>
+                            <div ng-switch-default="">
+                                {{item.answer}}
+                            </div>
+                        </td>
+                        <td class="text-center">{{item.category}}</td>
+                        <td class="text-center">
+                            <div class="form-group">
+                                <button class="btn btn-outline-danger"
+                                        ng-click="clickDeleteFaq(item.id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-outline-info"
+                                        ng-click="clickEditFaq(item)">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if="!shouldFaqsDisplayed()">
+                        <td class="text-center"
+                            colspan="4">
+                            <b class="text-danger">{{'MSG_NO_FAQ_AVAILABLE' | translate}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="float-right">
+                                <ul uib-pagination
+                                    items-per-page="loadFaqsConditions.pager.records"
+                                    total-items="loadFaqsResult.pager.totalRecords"
+                                    ng-model="loadFaqsConditions.pager.page"
+                                    ng-change="ngOnFaqMasterPageLoaded()"></ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="text-right">
+            <button class="btn btn-primary" ng-click="clickAddFaq()">
+                {{'TITLE_ADD' | translate}}
+            </button>
+        </div>
+    </div>
+</div>

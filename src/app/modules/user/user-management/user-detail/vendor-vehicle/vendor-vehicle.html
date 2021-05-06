@@ -1,0 +1,134 @@
+<form novalidate
+      name="editVendorVehicleForm"
+      ng-submit="clickUpdateVendorVehicle($event)">
+
+    <!--Vehicle type-->
+    <div class="row"
+         ng-if="shouldVehicleTypeDisplayed()">
+        <div class="col-3">
+            <b>{{'TITLE_VEHICLE_TYPE' | translate}}</b>
+        </div>
+        <div class="col-9"
+             ng-switch="editingVendorVehicle">
+            <div class="form-group">
+
+                <!--In edit mode-->
+                <select class="form-control"
+                        ng-model="editVendorModel.vehicle.value.type"
+                        ng-required="true"
+                        ng-options="validVehicle.key as validVehicle.value | translate for validVehicle in validVehicles"
+                        ng-switch-when="true"></select>
+
+                <!--In add mode-->
+                <input class="form-control"
+                       readonly
+                       ng-model="detailedUser.vendor.vehicle.type"
+                       ng-switch-default="">
+            </div>
+        </div>
+    </div>
+
+    <!--Vehicle name-->
+    <div class="row"
+         ng-if="shouldVehicleNameDisplay()">
+        <div class="col-3">
+            <b>{{'TITLE_VEHICLE_NAME' | translate}}</b>
+        </div>
+        <div class="col-9">
+            <div class="form-group"
+                 ng-switch="editingVendorVehicle">
+
+                <!--In edit mode-->
+                <input class="form-control"
+                       ng-model="editVendorModel.vehicle.value.name"
+                       ng-required="true"
+                       ng-switch-when="true">
+
+                <!--In add mode-->
+                <input class="form-control"
+                       readonly
+                       value="{{loadVehicleName(detailedUser.vendor.vehicle) | translate}}"
+                       ng-switch-default="">
+            </div>
+        </div>
+    </div>
+
+    <!--Vehicle model-->
+    <div class="row">
+        <div class="col-3">
+            <b>{{'TITLE_VEHICLE_MODEL' | translate}}</b>
+        </div>
+
+        <div class="col-9">
+
+            <div class="form-group"
+                 ng-switch="editingVendorVehicle">
+                <!--In edit mode-->
+                <input class="form-control"
+                           ng-model="editVendorModel.vehicle.value.model"
+                       ng-required="true"
+                       ng-switch-when="true">
+
+                <!--In add mode-->
+                <input class="form-control"
+                       readonly
+                       ng-model="detailedUser.vendor.vehicle.model"
+                       ng-switch-default="">
+            </div>
+        </div>
+    </div>
+
+    <!--Plate no-->
+    <div class="row">
+        <div class="col-3">
+            <b>{{'TITLE_PLATE_NO' | translate}}</b>
+        </div>
+
+        <div class="col-9">
+
+            <div class="form-group"
+                 ng-switch="editingVendorVehicle">
+                <!--In edit mode-->
+                <input class="form-control"
+                       ng-model="editVendorModel.vehicle.value.plateNo"
+                       ng-required="true"
+                       ng-switch-when="true">
+
+                <!--In add mode-->
+                <input class="form-control"
+                       readonly
+                       ng-model="detailedUser.vendor.vehicle.plateNo"
+                       ng-switch-default="">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-9 offset-3">
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button class="btn btn-outline-info"
+                            ng-if="!editingVendorVehicle"
+                            ng-click="clickEditVendorVehicle()">
+                        <span class="fa fa-pencil"></span>
+                    </button>
+                    <button class="btn btn-outline-primary"
+                            ng-if="editingVendorVehicle"
+                            ng-disabled="editVendorVehicleForm.$invalid || !editVendorVehicleForm.$dirty">
+                        <span class="fa fa-check"></span>
+                    </button>
+                    <button class="btn btn-outline-secondary"
+                            ng-if="editingVendorVehicle"
+                            ng-click="clickCancelEditVendorVehicle()">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+

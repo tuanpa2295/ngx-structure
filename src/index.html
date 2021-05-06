@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-csp class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-csp class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-csp class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-csp class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Tell the crawler that website contains javascript contents-->
+    <meta name="fragment" content="!">
+
+    <!--CSP (Content security policy)-->
+    <meta name="Content-Security-Policy" content="font-src 'self'">
+    <meta name="Content-Security-Policy" content="img-src 'self'">
+    <meta name="Content-Security-Policy" content="font-src 'self'">
+    <meta name="Content-Security-Policy" content="script-src 'self'">
+    <meta name="Content-Security-Policy" content="style-src 'self'">
+    <meta name="Content-Security-Policy" content="media-src 'self'">
+
+    <!--Skype | facebook preview-->
+    <meta property="og:title" content="ng-structure"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://i.ibb.co/FnTTTMX/building-block.jpg"/>
+    <meta property="og:description"
+          content="A simple code structure for AngularJS project that uses typescript, webpack, ..."/>
+
+    <!--Android browser theme-->
+    <meta name="theme-color" content="#60b4e2">
+
+    <!--Web information-->
+    <title>ng-structure</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico"/>
+    <base href="/">
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<ui-view></ui-view>
+</body>
+</html>

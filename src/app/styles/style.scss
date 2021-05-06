@@ -1,0 +1,128 @@
+// If you want to override variables do it here
+@import "variables";
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+// If you want to add something do it here
+@import "custom";
+
+
+.background-loader {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.background-loader div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #fff;
+  animation: background-loader-keyframe 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.background-loader div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+
+.background-loader div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+
+.background-loader div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+
+@keyframes background-loader-keyframe {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%, 100% {
+    top: 19px;
+    height: 26px;
+  }
+}
+
+
+.block-ui {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 5000;
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.text-middle {
+  vertical-align: middle;
+}
+
+tr.text-middle td,
+tr.text-middle th {
+  vertical-align: middle;
+}
+
+tr.text-center td,
+tr.text-center th {
+  text-align: center;
+}
+
+.toolbar {
+  position: fixed;
+}
+
+.toolbar.right {
+  right: 50px;
+}
+
+.toolbar.bottom {
+  bottom: 50px;
+}
+
+.ng-hide {
+  display: none !important;
+}
+
+textarea.no-resizable {
+  resize: none;
+}
+
+.r-0 {
+  right: 0;
+}
+
+.l-0 {
+  left: 0
+}
+
+.t-0 {
+  top: 0;
+}
+
+.b-0 {
+  bottom: 0;
+}
+
+.mb-50px {
+  margin-bottom: 50px;
+}
+
+.pb-50px {
+  padding-bottom: 50px;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.mr-5px {
+  margin-right: 5px;
+}

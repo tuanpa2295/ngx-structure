@@ -1,0 +1,79 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="text-center">{{'TITLE_FOOD_VENDOR' | translate}}</th>
+                        <th class="text-center">{{'TITLE_ADMIN' | translate}}</th>
+                        <th class="text-center">{{'TITLE_STATUS' | translate}}</th>
+                        <th class="text-center">{{'TITLE_CREATED_TIME' | translate}}</th>
+                        <th class="text-center">{{'TITLE_LAST_MODIFIED_TIME' | translate}}</th>
+                        <th class="text-center"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-if="shouldAppointmentsDisplayed()"
+                        ng-repeat="item in loadAppointmentsResult.items"
+                        class="text-middle text-center">
+                        <td>
+                            <b>{{item.vendor.fullName}}</b>
+                        </td>
+                        <td class="text-center">
+                            {{item.admin.fullName}}
+                        </td>
+                        <td>
+                            {{item.status}}
+                        </td>
+                        <td class="text-center">
+                            <i>{{item.createdTime | amUtc | amDateFormat:'MM.DD.YYYY HH:mm:ss'}}</i>
+                        </td>
+                        <td class="text-center">
+                            <i ng-if="item.lastModifiedTime != null">{{item.lastModifiedTime | amUtc |
+                                amDateFormat:'MM.DD.YYYY HH:mm:ss'}}</i>
+                        </td>
+                        <td class="text-center"
+                            ng-switch="item.availability == masterItemAvailabilities.available">
+
+                            <div class="form-group">
+                                <button class="btn btn-outline-danger"
+                                        ng-click="clickDeleteCloudDevice(item)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if="!shouldAppointmentsDisplayed()">
+                        <td class="text-center"
+                            colspan="6">
+                            <b class="text-danger">{{'MSG_NO_APPOINTMENT_AVAILABLE' | translate}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <div class="d-flex justify-content-center">
+                                <ul uib-pagination
+                                    items-per-page="loadAppointmentsCondition.pager.records"
+                                    total-items="loadAppointmentsResult.pager.totalRecords"
+                                    ng-model="loadAppointmentsCondition.pager.page"
+                                    ng-change="clickReloadAppointments()"></ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="toolbar right bottom">
+    <div class="text-right">
+        <button class="btn btn-outline-secondary"
+                ng-click="clickReloadAppointments(1)">
+            <i class="fa fa-refresh"></i>
+        </button>
+    </div>
+</div>

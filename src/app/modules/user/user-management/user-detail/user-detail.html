@@ -1,0 +1,102 @@
+<div class="card card-accent-dark">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-4 col-xs-6 text-center">
+                <div class="form-group">
+                    <img class="img-fluid" ng-src="{{loadUserPhoto(detailedUser)}}">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-primary"
+                            ng-click="clickChangeUserPhoto(detailedUser)">
+                        <span class="fa fa-camera"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-8 col-xs-6">
+                <div class="form-group">
+                    <table class="table table-condensed table-striped">
+                        <tbody>
+                        <tr>
+                            <th>{{'TITLE_USERNAME' | translate}}</th>
+                            <td>{{detailedUser.username}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{'TITLE_EMAIL_ADDRESS' | translate}}</th>
+                            <td>{{detailedUser.email}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{'TITLE_FULL_NAME' | translate}}</th>
+                            <td>{{detailedUser.fullName}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{'TITLE_PHONE_NUMBER' | translate}}</th>
+                            <td>{{detailedUser.phoneNo}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card card-accent-light"
+     ng-if="shouldFoodVendorAreaDisplayed()">
+    <div class="card-body">
+        <div class="form-group">
+            <nav>
+                <div class="nav nav-tabs"
+                     role="tablist">
+
+                    <!--Vendor-->
+                    <a class="nav-item nav-link"
+                       data-toggle="tab"
+                       role="tab"
+                       ui-sref-active="active"
+                       ui-sref="{{urlStateConstants.detailedVendorModuleName}}({id:'{{detailedUser.id}}'})"
+                       aria-controls="nav-home"
+                       aria-selected="true">{{'TITLE_VENDOR' | translate}}</a>
+
+                    <!--Assigned location-->
+                    <a class="nav-item nav-link"
+                       ng-if="shouldAssignedLocationDisplayed()"
+                       data-toggle="tab"
+                       ui-sref="{{urlStateConstants.vendorAssignedLocationModuleName}}({id:'{{detailedUser.id}}'})"
+                       ui-sref-active="active"
+                       role="tab"
+                       aria-controls="nav-home"
+                       aria-selected="true">{{'TITLE_ASSIGNED_LOCATIONS' | translate}}</a>
+
+                    <!--Preferred location-->
+                    <a class="nav-item nav-link"
+                       ng-if="shouldPreferredLocationDisplay()"
+                       data-toggle="tab"
+                       ui-sref="{{urlStateConstants.vendorPreferredLocationModuleName}}({id:'{{detailedUser.id}}'})"
+                       ui-sref-active="active"
+                       role="tab"
+                       aria-controls="nav-home"
+                       aria-selected="true">{{'TITLE_PREFERRED_LOCATIONS' | translate}}</a>
+
+                    <!--Vehicle-->
+                    <a class="nav-item nav-link"
+                       ng-if="shouldVehicleDisplay()"
+                       data-toggle="tab"
+                       ui-sref="{{urlStateConstants.vendorVehicleModuleName}}({id:'{{detailedUser.id}}'})"
+                       ui-sref-active="active"
+                       role="tab"
+                       aria-controls="nav-home"
+                       aria-selected="true">{{'TITLE_VEHICLE' | translate}}</a>
+                </div>
+            </nav>
+        </div>
+
+        <div ui-view="{{detailedUserViewConstants.detailedFoodVendor}}"></div>
+
+        <div ui-view="{{detailedUserViewConstants.assignedLocations}}"></div>
+
+        <div ui-view="{{detailedUserViewConstants.preferredLocations}}"></div>
+
+        <div ui-view="{{detailedUserViewConstants.vehicle}}"></div>
+    </div>
+</div>
+
