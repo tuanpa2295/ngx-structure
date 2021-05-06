@@ -2,15 +2,13 @@
 
 Description:
 
- * This is a simple structure of an AngularJS application. This project is integrated with Webpack for files bundling & live reload.
+ * This is a simple structure of an Angular application. This project is integrated with Webpack for files bundling & live reload.
  * Language supported : 
     * ES2015, ES6 (using `babel-loader`).
     * Sass (using `scss-loader`)
     
  * Polyfill:
     * `bluebird` for `Promise`. 
-
-**Online demo can be found** [here](https://ng-structure-wp4.netlify.com):
 
 #### Project structure.
 ```
