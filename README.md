@@ -1,4 +1,4 @@
-## ng-structure
+## ngx-structure
 
 Description:
 
